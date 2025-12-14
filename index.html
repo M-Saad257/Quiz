@@ -223,42 +223,23 @@
     </div>
 
     <script>
-        // 40-question pool
+                // 15 questions: Lists & Tuples (Basic)
         const allQuestions = [
-            { q: "Which symbol is used for single-line comments in Python?", options: ["//", "#", "/*", "--"], answer: 1 },
-            { q: "Which data type is used to store decimal numbers?", options: ["int", "float", "str", "bool"], answer: 1 },
-            { q: "Which is a valid Python variable name?", options: ["2name", "my-name", "my_name", "my name"], answer: 2 },
-            { q: "What is the output of len('Python')?", options: ["5", "6", "7", "Error"], answer: 1 },
-            { q: "Which function converts text to uppercase?", options: ["upper()", "lower()", "title()", "cap()"], answer: 0 },
-            { q: "Which data type stores text?", options: ["int", "float", "str", "bool"], answer: 2 },
-            { q: "Which value represents True in Python?", options: ["true", "TRUE", "True", "1"], answer: 2 },
-            { q: "Which operator is used to assign a value?", options: ["==", "=", "<=", ">="], answer: 1 },
-            { q: "What is the type of 10?", options: ["int", "float", "str", "bool"], answer: 0 },
-            { q: "What is the type of '10'?", options: ["int", "float", "str", "bool"], answer: 2 },
-
-            { q: "Which function converts text to lowercase?", options: ["lower()", "down()", "small()", "case()"], answer: 0 },
-            { q: "What is the first character of 'Python'?", options: ["P", "y", "t", "Error"], answer: 0 },
-            { q: "Which is a correct string in Python?", options: ['"hello"', "'hello'", "Both", "None"], answer: 2 },
-            { q: "What is the output of len('Hi')?", options: ["1", "2", "3", "Error"], answer: 1 },
-            { q: "What does # represent in Python?", options: ["Loop", "Comment", "Operator", "Function"], answer: 1 },
-            { q: "Which function checks data type?", options: ["type()", "check()", "datatype()", "id()"], answer: 0 },
-            { q: "Which of these is a boolean data type?", options: ["'False'", "false", "False", "0"], answer: 2 },
-            { q: "Which function finds string length?", options: ["size()", "length()", "len()", "count()"], answer: 2 },
-            { q: "What is the output of 'hello'.capitalize()?", options: ["Hello", "HELLO", "hello", "Error"], answer: 0 },
-
-            { q: "Which of these is NOT a data type?", options: ["int", "float", "text", "bool"], answer: 2 },
-            { q: "Which symbol is used for indexing?", options: ["()", "{}", "[]", "<>"], answer: 2 },
-            { q: "What is the index of first element?", options: ["0", "1", "-1", "None"], answer: 0 },
-            { q: "Which keyword is used to take input?", options: ["scan", "read", "input", "get"], answer: 2 },
-            { q: "Which operator checks equality?", options: ["=", "==", "!=", "<="], answer: 1 },
-            { q: "Which function prints output?", options: ["echo()", "display()", "print()", "show()"], answer: 2 },
-            { q: "What is output of 'abc'.upper()?", options: ["ABC", "Abc", "abc", "Error"], answer: 0 },
-            { q: "Which symbol shows a string?", options: ["\' \'", "\" \"", "Both", "None"], answer: 2 },
-            { q: "Which function counts characters?", options: ["count()", "len()", "size()", "total()"], answer: 1 },
-            { q: "What is output of 'Hi'[1]?", options: ["H", "i", "Error", "None"], answer: 1 },
-            { q: "Which is a valid comment?", options: ["// comment", "# comment", "/* comment */", "None of them"], answer: 1 },
-            { q: "What does len() return?", options: ["string", "number", "boolean", "list"], answer: 1 },
-            { q: "Which of these is immutable?", options: ["list", "dict", "string", "set"], answer: 2 }
+            { q: "Which brackets are used to create a list in Python?", options: ["()", "{}", "[]", "<>"], answer: 2 },
+            { q: "Which brackets are used to create a tuple?", options: ["()", "{}", "[]", "<>"], answer: 0 },
+            { q: "Which of these is a list?", options: ["(1, 2, 3)", "[1, 2, 3]", "{1, 2, 3}", "None"], answer: 1 },
+            { q: "Which of these is a tuple?", options: ["[1, 2]", "(1, 2)", "{1, 2}", "None"], answer: 1 },
+            { q: "What is the index of the first element in a list?", options: ["0", "1", "-1", "None"], answer: 0 },
+            { q: "Which data structure is mutable?", options: ["tuple", "string", "list", "int"], answer: 2 },
+            { q: "Which data structure is immutable?", options: ["list", "dict", "tuple", "set"], answer: 2 },
+            { q: "How do you access the first element of list a?", options: ["a(0)", "a[0]", "a{0}", "a<0>"], answer: 1 },
+            { q: "What is the output of len([1, 2, 3])?", options: ["2", "3", "4", "Error"], answer: 1 },
+            { q: "Which function gives length of a list or tuple?", options: ["size()", "count()", "len()", "total()"], answer: 2 },
+            { q: "Which method adds an element to a list?", options: ["add()", "insert()", "append()", "push()"], answer: 2 },
+            { q: "Can we change values inside a tuple?", options: ["Yes", "No", "Sometimes", "Only numbers"], answer: 1 },
+            { q: "Which list method removes last element?", options: ["remove()", "delete()", "pop()", "clear()"], answer: 2 },
+            { q: "What is the output of [1, 2, 3][1]?", options: ["1", "2", "3", "Error"], answer: 1 },
+            { q: "Which of these can store multiple data types?", options: ["int", "list", "float", "bool"], answer: 1 }
         ];
 
         let questions = [];
@@ -359,5 +340,6 @@
     </script>
 
 </body>
+
 
 </html>
