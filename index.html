@@ -2,344 +2,227 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./quiz.png" type="image/x-icon">
-    <title>Python Basics Practice Test</title>
+    <title>Python Basics Mixed Test</title>
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --bg: #0f172a;
-            --card: #ffffff;
-            --muted: #6b7280;
-            --success: #16a34a;
-            --danger: #dc2626;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background: radial-gradient(1200px 600px at 10% 10%, #818cf8, transparent 40%),
-                radial-gradient(1200px 600px at 90% 90%, #a78bfa, transparent 40%),
-                var(--bg);
-            min-height: 100vh;
+            font-family: Segoe UI, system-ui, sans-serif;
+            background: #0f172a;
+            color: #111827;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             margin: 0;
             padding: 16px;
         }
 
-        .quiz-container {
-            background: var(--card);
-            padding: 28px 26px;
+        .box {
+            background: #fff;
+            max-width: 650px;
             width: 100%;
-            max-width: 560px;
-            border-radius: 18px;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-            animation: scaleIn 0.4s ease;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.96);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
         }
 
         h1 {
             text-align: center;
-            margin: 0 0 12px;
-            font-size: 26px;
-            color: #111827;
+            margin-top: 0
         }
 
-        /* Intro screen */
         .intro {
             text-align: center;
-            animation: fadeIn 0.8s ease;
         }
 
         .intro p {
-            color: var(--muted);
-            margin: 6px 0 12px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            color: #374151;
         }
 
         .progress-wrapper {
             background: #e5e7eb;
             border-radius: 999px;
             overflow: hidden;
-            height: 16px;
-            margin-bottom: 22px;
+            height: 14px;
+            margin-bottom: 18px;
         }
 
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, var(--primary), #8b5cf6);
-            transition: width 0.35s ease;
-            text-align: center;
-            color: #fff;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
             font-size: 11px;
-            line-height: 16px;
-            font-weight: 600;
+            text-align: center;
+            line-height: 14px;
+            transition: width .3s ease;
         }
 
         .question {
-            font-size: 18px;
             font-weight: 600;
-            color: #111827;
-            margin-bottom: 16px;
-        }
-
-        .options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 10px
         }
 
         .options label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 14px;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 15px;
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer
         }
 
-        .options label:hover {
-            border-color: var(--primary);
-            background: #eef2ff;
-        }
-
-        .options input {
-            accent-color: var(--primary);
-            transform: scale(1.1);
+        textarea {
+            width: 100%;
+            min-height: 90px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-family: monospace;
         }
 
         button {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            color: #fff;
-            border: none;
-            border-radius: 14px;
+            margin-top: 16px;
+            padding: 12px;
             font-size: 16px;
-            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            background: #6366f1;
+            color: white;
             cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 18px rgba(99, 102, 241, 0.4);
+            background: #4f46e5
         }
 
         .result {
-            margin-top: 20px;
-            animation: fadeIn 0.6s ease;
-        }
-
-        .result h2 {
-            text-align: center;
-            margin-bottom: 8px;
-        }
-
-        .result h3 {
-            margin-top: 18px;
-            color: #111827;
-        }
-
-        .result p {
-            background: #f9fafb;
-            border-radius: 12px;
-            padding: 12px;
-            font-size: 14px;
-            margin-bottom: 10px;
+            margin-top: 20px
         }
 
         .correct {
-            color: var(--success);
-            font-weight: 600;
+            color: green;
+            font-weight: 600
         }
 
         .wrong {
-            color: var(--danger);
-            font-weight: 600;
+            color: red;
+            font-weight: 600
         }
     </style>
 </head>
 
 <body>
 
-    <div class="quiz-container">
+    <div class="box">
         <h1>Python Basics Test</h1>
 
-        <!-- Intro Screen -->
+        <!-- INTRO SCREEN -->
         <div id="intro" class="intro">
             <p><strong>Be Honest 👀</strong></p>
-            <p>This test will help you find your weak areas in Python basics.</p>
-            <p>📸 Take a screenshot of your result and share it with me so we can work on your weak areas.</p>
-            <button onclick="startQuiz()">Start Test</button>
+            <p>This test will help identify your weak areas in Python basics.</p>
+            <p>📸 Take a screenshot of your result and send it to me after completion.</p>
+            <button onclick="startTest()">Start Test</button>
         </div>
 
-        <!-- Quiz -->
-        <div id="quiz" style="display:none;">
+        <!-- QUIZ -->
+        <div id="quizSection" style="display:none;">
             <div class="progress-wrapper">
                 <div class="progress-bar" id="progressBar">0%</div>
             </div>
-            <div class="question" id="question"></div>
-            <div class="options" id="options"></div>
+            <div id="quiz"></div>
             <button onclick="nextQuestion()">Next</button>
         </div>
 
-        <!-- Result -->
-        <div class="result" id="result"></div>
+        <!-- RESULT -->
+        <div id="result" class="result"></div>
     </div>
 
     <script>
-                // 15 questions: Lists & Tuples (Basic)
-        const allQuestions = [
-            { q: "Which brackets are used to create a list in Python?", options: ["()", "{}", "[]", "<>"], answer: 2 },
-            { q: "Which brackets are used to create a tuple?", options: ["()", "{}", "[]", "<>"], answer: 0 },
-            { q: "Which of these is a list?", options: ["(1, 2, 3)", "[1, 2, 3]", "{1, 2, 3}", "None"], answer: 1 },
-            { q: "Which of these is a tuple?", options: ["[1, 2]", "(1, 2)", "{1, 2}", "None"], answer: 1 },
-            { q: "What is the index of the first element in a list?", options: ["0", "1", "-1", "None"], answer: 0 },
-            { q: "Which data structure is mutable?", options: ["tuple", "string", "list", "int"], answer: 2 },
-            { q: "Which data structure is immutable?", options: ["list", "dict", "tuple", "set"], answer: 2 },
-            { q: "How do you access the first element of list a?", options: ["a(0)", "a[0]", "a{0}", "a<0>"], answer: 1 },
-            { q: "What is the output of len([1, 2, 3])?", options: ["2", "3", "4", "Error"], answer: 1 },
-            { q: "Which function gives length of a list or tuple?", options: ["size()", "count()", "len()", "total()"], answer: 2 },
-            { q: "Which method adds an element to a list?", options: ["add()", "insert()", "append()", "push()"], answer: 2 },
-            { q: "Can we change values inside a tuple?", options: ["Yes", "No", "Sometimes", "Only numbers"], answer: 1 },
-            { q: "Which list method removes last element?", options: ["remove()", "delete()", "pop()", "clear()"], answer: 2 },
-            { q: "What is the output of [1, 2, 3][1]?", options: ["1", "2", "3", "Error"], answer: 1 },
-            { q: "Which of these can store multiple data types?", options: ["int", "list", "float", "bool"], answer: 1 }
+        const questions = [
+            { type: "mcq", q: "Which symbol is used for comments in Python?", options: ["//", "#", "/*", "--"], answer: 1 },
+            { type: "text", q: "What are comments in Python?", keywords: ["ignore", "not executed", "explain", "read"] },
+            { type: "text", q: "Write one line of code to create a variable x with value 10", keywords: ["x", "=", "10"] },
+            { type: "mcq", q: "Which data type is used to store text in Python?", options: ["int", "float", "str", "bool"], answer: 2 },
+            { type: "text", q: "What is a variable in Python?", keywords: ["store", "value", "memory"] },
+            { type: "mcq", q: "What is the output of: print(len('Ibrahim')) ?", options: ["5", "6", "7", "Error"], answer: 2 },
+            { type: "text", q: "Write one string method used to convert text into uppercase", keywords: ["upper"] },
+            { type: "mcq", q: "Which brackets are used to create a list?", options: ["()", "{}", "[]", "<>"], answer: 2 },
+            { type: "text", q: "How do you access the first element of a list named myList?", keywords: ["mylist", "[0]"] },
+            { type: "mcq", q: "Which of the following is a tuple?", options: ["[1,2]", "(1,2)", "{1,2}", "None"], answer: 1 },
+            { type: "text", q: "Why can't we change values inside a tuple?", keywords: ["immutable", "cannot change"] },
+            { type: "text", q: "Write a dictionary with key 'name' and value 'Ali'", keywords: ["{", "name", "ali", "}"] },
+            { type: "mcq", q: "Which data structure does not allow duplicate values?", options: ["List", "Tuple", "Set", "Dictionary"], answer: 2 },
+            { type: "text", q: "What is a set in Python?", keywords: ["unique", "no duplicate", "collection"] },
+            { type: "text", q: "Write an if condition that checks if x is greater than 5", keywords: ["if", "x", ">", "5"] }
         ];
 
-        let questions = [];
-        let current = 0;
+        let index = 0;
         let score = 0;
         let review = [];
 
-        function startQuiz() {
+        function startTest() {
             document.getElementById('intro').style.display = 'none';
-            document.getElementById('quiz').style.display = 'block';
-            questions = shuffle(allQuestions).slice(0, 10); // random 10
+            document.getElementById('quizSection').style.display = 'block';
             loadQuestion();
         }
 
-        function shuffle(arr) {
-            return arr.sort(() => Math.random() - 0.5);
-        }
-
-        function loadQuestion() {
-            document.getElementById('question').innerText = questions[current].q;
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = "";
-            questions[current].options.forEach((opt, index) => {
-                optionsDiv.innerHTML += `<label><input type="radio" name="option" value="${index}"> ${opt}</label>`;
-            });
-            updateProgress();
-        }
-
         function updateProgress() {
-            const percent = Math.round((current / questions.length) * 100);
+            const percent = Math.round((index / questions.length) * 100);
             const bar = document.getElementById('progressBar');
             bar.style.width = percent + '%';
             bar.innerText = percent + '%';
         }
 
+        function loadQuestion() {
+            updateProgress();
+            const q = questions[index];
+            const quiz = document.getElementById('quiz');
+            quiz.innerHTML = `<div class='question'>Q${index + 1}: ${q.q}</div>`;
+
+            if (q.type === "mcq") {
+                q.options.forEach((opt, i) => {
+                    quiz.innerHTML += `<label><input type='radio' name='ans' value='${i}'> ${opt}</label><br>`;
+                });
+            } else {
+                quiz.innerHTML += `<textarea id='textAnswer' placeholder='Write your answer here...'></textarea>`;
+            }
+        }
+
         function nextQuestion() {
-            const selected = document.querySelector('input[name="option"]:checked');
-            if (!selected) return alert('Select an option');
+            const q = questions[index];
+            let correct = false;
 
-            const isCorrect = parseInt(selected.value) === questions[current].answer;
-            review.push({
-                q: questions[current].q,
-                correct: questions[current].options[questions[current].answer],
-                chosen: questions[current].options[selected.value],
-                isCorrect
-            });
+            if (q.type === "mcq") {
+                const selected = document.querySelector("input[name='ans']:checked");
+                if (!selected) return alert("Select an option");
+                correct = parseInt(selected.value) === q.answer;
+            } else {
+                const ans = document.getElementById('textAnswer').value.toLowerCase();
+                let matched = 0;
+                q.keywords.forEach(k => { if (ans.includes(k)) matched++; });
+                correct = matched >= Math.ceil(q.keywords.length / 2);
+                if (ans == "") return alert("Enter your answer");
+            }
 
-            if (isCorrect) score++;
-            current++;
+            if (correct) score++;
+            review.push({ q: q.q, correct });
+            index++;
 
-            if (current < questions.length) loadQuestion();
+            if (index < questions.length) loadQuestion();
             else showResult();
         }
 
         function showResult() {
-            document.getElementById('quiz').style.display = 'none';
-
-            let remark = "";
-            let remarkColor = "";
-
-            if (score >= 9) {
-                remark = "🌟 Excellent! Your Python basics are very strong.";
-                remarkColor = "var(--success)";
-            } else if (score >= 7) {
-                remark = "👍 Good job! Just revise a few weak areas.";
-                remarkColor = "#2563eb";
-            } else if (score >= 5) {
-                remark = "⚠️ Average performance. Practice more on basics.";
-                remarkColor = "#ca8a04";
-            } else {
-                remark = "❌ Needs improvement. Focus on fundamentals and retry.";
-                remarkColor = "var(--danger)";
-            }
-
-            let html = `
-        <h2>Score: ${score} / ${questions.length}</h2>
-        <p style="text-align:center; font-weight:600; color:${remarkColor}; margin-bottom:16px;">
-            ${remark}
-        </p>
-        <h3>Detailed Review:</h3>
-    `;
-
+            document.getElementById('quizSection').style.display = 'none';
+            let html = `<h2>Score: ${score} / ${questions.length}</h2>`;
             review.forEach((r, i) => {
-                html += `
-            <p>
-                <strong>Q${i + 1}:</strong> ${r.q}<br>
-                Your Answer: 
-                <span class="${r.isCorrect ? 'correct' : 'wrong'}">${r.chosen}</span><br>
-                Correct Answer: 
-                <span class="correct">${r.correct}</span>
-            </p>
-        `;
+                html += `<p>${i + 1}. ${r.q}<br><span class='${r.correct ? 'correct' : 'wrong'}'>${r.correct ? 'Correct' : 'Wrong'}</span></p>`;
             });
-
             document.getElementById('result').innerHTML = html;
         }
-
     </script>
 
 </body>
-
 
 </html>
